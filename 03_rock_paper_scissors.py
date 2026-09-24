@@ -1,38 +1,52 @@
-print("Welcome to Rock, Paper, Scissors!")
-print("You can play against the computer or have the computer play against itself.")
+import random
+
 
 def play_rps():
-    user_input = input("Type 'p' to play against the computer, 'c' for the computer to play against itself, or 'n' to exit: ")
-    if user_input.lower() == 'n':
-        print("Thanks for playing!")
-        return
-    elif user_input.lower() == 'p':
-        user_choice = input("Enter your choice (rock, paper, or scissors): ").lower()
-        if user_choice not in ['rock', 'paper', 'scissors']:
-            print("Invalid choice. Please enter rock, paper, or scissors.")
-            return play_rps()
-        computer_choice = random.choice(['rock', 'paper', 'scissors'])
-        print(f"The computer chose {computer_choice}.")
-        if user_choice == computer_choice:
-            print("It's a tie!")
-        elif (user_choice == 'rock' and computer_choice == 'scissors') or \
-             (user_choice == 'paper' and computer_choice == 'rock') or \
-             (user_choice == 'scissors' and computer_choice == 'paper'):
-            print("You win!")
-        else:
-            print("You lose!")
-    elif user_input.lower() == 'c':
-        computer_choice1 = random.choice(['rock', 'paper', 'scissors'])
-        computer_choice2 = random.choice(['rock', 'paper', 'scissors'])
-        print(f"Computer 1 chose {computer_choice1}.")
-        print(f"Computer 2 chose {computer_choice2}.")
-        if computer_choice1 == computer_choice2:
-            print("It's a tie!")
-        elif (computer_choice1 == 'rock' and computer_choice2 == 'scissors') or \
-             (computer_choice1 == 'paper' and computer_choice2 == 'rock') or \
-             (computer_choice1 == 'scissors' and computer_choice2 == 'paper'):
-            print("Computer 1 wins!")
-        else:
-            print("Computer 2 wins!")
+    options = ['r', 'p', 's']
+    while True:
+        computer_play = random.choice(options)
+        user_input = input("\nChoose 'r' for rock, 'p' for paper, or 's' for scissors, 'q' to quite: ").lower(\
+            )
 
-play_rps()
+        if user_input == 'q':
+            print("\nThanks for playing!")
+            break
+        elif user_input == 'r':
+            if computer_play == 'r':
+                print("I played Rock, let's play again.")
+                continue
+            elif computer_play == 's':
+                print("I played Scissors, you win. :(")
+            elif computer_play == 'p':
+                print("I played Paper, I win. :)")
+        elif user_input == 'p':
+            if computer_play == 'p':
+                print("I played Paper, let's play again.")
+                continue
+            elif computer_play == 'r':
+                print("I played Rock, you win. :(")
+            elif computer_play == 's':
+                print("I played Scissors, I win. :)")
+        elif user_input == 's':
+            if computer_play == 's':
+                print("I played Scissors, let's play again.")
+                continue
+            elif computer_play == 'r':
+                print("I played Rock, I win. :)")
+            elif computer_play == 'p':
+                print("I played Paper, you win. :(")
+        else:
+            print("Please give a valid INPUT!")
+
+def playgame():
+    print("Welcome to the ROCK, PAPER, SCISSORs - the game!")
+    print("I don't think I need to explain the rules, so let's just start.")
+    print("you choose 'r' for rock, 'p' for paper, or 's' for scissors (and 'q' if you want to quite)")
+    print("I will also randomly choose one, I promise, I won't cheat... hahaha (evil smile)")
+
+    play_rps()
+
+
+
+playgame()
+
